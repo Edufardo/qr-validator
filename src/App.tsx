@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import './app.css'
 import Profile from "./components/profile/Profile";
 import ProfileOption from "./components/profile/options/ProfileOptions";
+import Qr from "./components/qr/Qr";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <header>
       <h1> Page 💻</h1>
       <Navbar />
+      <Qr />
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
