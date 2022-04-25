@@ -1,8 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import "./home.css";
+var QRCode = require('qrcode')
+
+
 const Home = () => {
   const url = "http://localhost:4200/api/card/create";
+
+  let [ qr, setQr] = useState('')
+  let [ qrBool, setQrBool] = useState(false)
   let [contact, setContact] = useState({
     name: "",
     lastName: "",
@@ -10,9 +16,11 @@ const Home = () => {
     cellPhone: null,
   });
 
+  let qrCode = null
+
   const handleSubmit = (event: any) => {
+    console.log(qrBool)
     event.preventDefault();
-    generateQr();
     // fetch(url, {
     //     method: 'post',
     //     mode: 'no-cors',
@@ -20,52 +28,21 @@ const Home = () => {
     //         name: "Eduardo"
     //     })
     // }).then(res => res.json()).then(data => console.log(data))
-    // axios
-    //   .post(url, contact)
-    //   .then((res) => console.log(res.data))
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // console.log(contact);
+    axios
+      .post(url, contact)
+      .then((res) => {
+        if(res){
+          qrCode = QRCode.toDataURL(res.data).then(setQr)
+          setQrBool(true)
+          console.log(JSON.stringify(qr))
+        }
+      })
+      .catch((error) => { 
+        console.log(error);
+      });
+    console.log(contact);
   };
 
-  const generateQr = () => {
-    let vCard: String =
-      "BEGIN:VCARD" +
-        "\r\nN:" +
-        contact.lastName +
-        ";" +
-        contact.name +
-        ";;;" +
-        "\r\nFN: " +
-        contact.name +
-        "  " +
-        contact.lastName +
-        contact.cellPhone &&
-      +"a" + "\r\nTEL;CELL,VOICE:" + contact.cellPhone + contact.email &&
-      +"a" + "\r\nEMAIL;INTERNET,HOME:" + contact.email;
-    
-    console.log(vCard)
-    let a,
-      b = contact.lastName,
-      c = contact.name,
-      g = contact.cellPhone,
-      j = contact.email;
-    (a = "BEGIN:VCARD"),
-      (a += "\r\nN:" + b + ";" + c + ";;;"),
-      (a += "\r\nFN: " + c + "  " + b),
-      g && (a += "\r\nTEL;CELL,VOICE:" + g),
-      j && (a += "\r\nEMAIL;INTERNET,HOME:" + j),
-      (a += "\r\nEND:VCARD");
-    console.log(
-      (a = "BEGIN:VCARD"),
-      (a += "\r\nN:" + b + ";" + c + ";;;"),
-      (a += "\r\nFN: " + c + "  " + b),
-      g && (a += "\r\nTEL;CELL,VOICE:" + g),
-      j && (a += "\r\nEMAIL;INTERNET,HOME:" + j),
-      (a += "\r\nEND:VCARD")
-    );
-  };
 
   const setInfo = (event: any) => {
     setContact({
@@ -95,6 +72,10 @@ const Home = () => {
         </div>
         <button type="submit">Generar Qr!</button>
       </form>
+      { qrBool ?
+       <div>
+        <img src={qr}/>
+       </div>  : null}
     </div>
   );
 };
