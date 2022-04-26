@@ -21,13 +21,6 @@ const Home = () => {
   const handleSubmit = (event: any) => {
     console.log(qrBool)
     event.preventDefault();
-    // fetch(url, {
-    //     method: 'post',
-    //     mode: 'no-cors',
-    //     body: JSON.stringify({
-    //         name: "Eduardo"
-    //     })
-    // }).then(res => res.json()).then(data => console.log(data))
     axios
       .post(url, contact)
       .then((res) => {
@@ -52,30 +45,31 @@ const Home = () => {
   };
 
   return (
-    <div className="row">
-      <form className="col-12" onSubmit={handleSubmit}>
-        <div className="col-12">
+    <div className="cardForm">
+      <form className="formInfo" onSubmit={handleSubmit}>
+        <div className="formElement col-12">
           <label>Nombre</label>
           <input type="text" name="name" onChange={setInfo} />
         </div>
-        <div className="col-12">
+        <div className="formElement col-12">
           <label>Apellido</label>
           <input type="text" name="lastName" onChange={setInfo} />
         </div>
-        <div className="col-12">
+        <div className="formElement col-12">
           <label>Teléfono</label>
           <input type="number" name="cellPhone" onChange={setInfo} />
         </div>
-        <div className="col-12">
+        <div className="formElement col-12">
           <label>Correo</label>
           <input type="email" name="email" onChange={setInfo} />
         </div>
-        <button type="submit">Generar Qr!</button>
+      <button className="btn btn-primary" type="submit" >Generar Qr!</button>
       </form>
       { qrBool ?
-       <div>
+       <div className="qr">
         <img src={qr}/>
        </div>  : null}
+
     </div>
   );
 };

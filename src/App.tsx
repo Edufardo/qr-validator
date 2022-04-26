@@ -10,10 +10,8 @@ import Qr from "./components/qr/Qr";
 function App() {
   return (
     <div className="App">
-      <header>
-      <h1> Page 💻</h1>
-      <Navbar />
-      <Qr />
+      <header className="navBar">
+        <h1> Make your company card! 🔖</h1>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />

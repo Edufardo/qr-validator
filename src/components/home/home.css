@@ -3,3 +3,36 @@
     align-items: center;
     justify-content: center;
 }
+
+.cardForm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.cardForm button{
+    margin-top: 5px;
+}
+
+.formElement{
+    margin: 5px;
+}
+.formElement label{
+    margin-right: 5px;
+}
+
+.formInfo label{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
