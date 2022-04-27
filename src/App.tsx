@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="navBar">
-        <h1> Make your company card! 🔖</h1>
+        <h1> Make your contact qr card! <span className="grow">🔖</span> </h1>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />

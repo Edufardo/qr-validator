@@ -2,28 +2,54 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.content .alert{
+    margin: 40px;
+    width: 50%;
+    text-align: center;
 }
 
 .cardForm {
+    background-color: #ffffff;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .cardForm button{
     margin-top: 5px;
+    width: 40%;
+    height: 40px
 }
 
 .formElement{
     margin: 5px;
 }
-.formElement label{
-    margin-right: 5px;
+.formElement label, input{
+   width: 100%;
 }
 
-.formInfo label{
-    width: 40%;
+.formElement label{
+}
+
+.formElement input{
+    border: none;
+    border-bottom: 1px solid  rgba(81, 116, 205, 0.708); 
+}
+
+.formElement input:focus{
+    outline: none; 
+}
+
+.formInfo {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,5 +60,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin: 20px;
 }

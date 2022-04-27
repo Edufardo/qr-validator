@@ -3,8 +3,9 @@ header{
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
-    padding: 20px;
-    background: rgba(93, 127, 215, 0.708);    
+    padding: 20px;  
+ 
+
 }
 
 .navBar{
@@ -14,6 +15,19 @@ header{
 }
 
 .navBar h1{
-
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 60px;
     margin-top: 50px;
+    cursor: default;
+}
+
+.grow:hover{
+    cursor: default;
+    transform: scale(1.5);
+    transition: all .2s ease-in-out;
+}
+
+body {
+    background: rgba(81, 116, 205, 0.708);  
 }
